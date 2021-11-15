@@ -1,0 +1,10 @@
+.TopBar {
+  margin: 0 0 30px 0;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
+  padding: 16px 24px;
+}
