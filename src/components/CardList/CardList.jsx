@@ -5,6 +5,7 @@ import './CardList.css'
 
 const CardList = () => {
   const { data } = useContext(Context)
+
   return (
     <div className="CardList">
       {data.map((item) => (

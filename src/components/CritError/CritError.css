@@ -1,0 +1,43 @@
+@import url(../../App.css);
+
+.CritError {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 343px;
+  height: 150px;
+  border: 1px solid green;
+}
+.CritError-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.CritError-title {
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 22px;
+  color: var(--strong-text-color);
+}
+
+.CritError-text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--lite-text-color);
+}
+
+.CritError-footer {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: #6534ff;
+}
+
+.CritError-footer a {
+  text-decoration: none;
+}

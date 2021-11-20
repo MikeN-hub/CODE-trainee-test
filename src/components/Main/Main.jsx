@@ -1,9 +1,12 @@
+import TopBar from '../TopBar/TopBar'
+import CardList from '../CardList/CardList'
 import './Main.css'
 
-const Main = ({ children }) => {
+const Main = () => {
   return (
     <div className="Main">
-      {children}
+      <TopBar />
+      <CardList />
     </div>
   )
 }

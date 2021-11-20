@@ -1,0 +1,51 @@
+@import url(../../App.css);
+
+.Profile {
+  height: 414px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.navigation-bar {
+  margin-top: 12px;
+  height: 48px;
+}
+
+.navigation-bar a {
+  width: 48px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.person-card {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.person-card .avatar {
+  margin-bottom: 24px;
+}
+
+.person-card .avatar img {
+  width: 72px;
+  height: 72px;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+}
+
+.person-card .fullName {
+  margin-bottom: 12px;
+}
+
+.person-card .fullName span {
+  padding: 0 5px;
+}

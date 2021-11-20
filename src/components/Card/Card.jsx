@@ -1,15 +1,15 @@
 import { useContext } from 'react'
-import { Context } from '../../context'
 import { Link } from 'react-router-dom'
+import { Context } from '../../context'
 import './Card.css'
 
 const Card = ({ item }) => {
-  const { setItemDetails } = useContext(Context)
+  const { setProfileInfo } = useContext(Context)
 
   return (
     <div className="Card">
-      <div className="Card__avatar" onClick={() => setItemDetails(item)}>
-        <Link to="/details">
+      <div className="Card__avatar" onClick={() => setProfileInfo(item)}>
+        <Link to="/profile">
           <img src={item.avatarUrl} alt="avatar pic" />
         </Link>
       </div>

@@ -8,7 +8,6 @@
 .Card__avatar {
   width: 72px;
   height: 72px;
-  position: relative;
 }
 .Card__avatar img {
   width: 72px;
