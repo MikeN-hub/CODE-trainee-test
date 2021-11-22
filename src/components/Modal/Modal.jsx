@@ -1,12 +1,12 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import { Context } from '../../context'
 import cancel_icon from '../../assets/icons/cancel.png'
 import './Modal.css'
 
 const Modal = () => {
-  const { applySort, showModal, setShowModal } = useContext(Context)
+  const { setShowModal } = useContext(Context)
   const inputHandler = (id) => {
-    applySort(id)
+    console.log(id)
   }
   return (
     <div className="Modal">

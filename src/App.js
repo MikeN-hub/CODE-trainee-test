@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import './App.css'
 import { Context } from './context'
 import Main from './components/Main/Main'
 import Profile from './components/Profile/Profile'
@@ -9,13 +8,14 @@ import CritError from './components/CritError/CritError'
 import Plug from './components/Plug'
 import Modal from './components/Modal/Modal'
 import SearchError from './components/SearchError/SearchError'
+import './App.css'
 
 function App() {
   const [data, setData] = useState([])
-  const [changedData, setChangedData] = useState([])
   const [showCritError, setShowCritError] = useState(false)
   const [searchError, setSearchError] = useState(false)
   const [showModal, setShowModal] = useState(false)
+  const [needToSort, setNeedToSort] = useState(false);
   const [profileInfo, setProfileInfo] = useState({})
   const [inputText, setInputText] = useState('')
 
@@ -26,8 +26,8 @@ function App() {
     const getData = async () => {
       try {
         const res = await axios.get(URL, {
-          params: {
-            'Content-Type': 'Application/json',
+          headers: {
+            'Content-Type': 'application/json',
             Prefer: 'code=200, dynamic=true',
           },
         })
@@ -42,16 +42,11 @@ function App() {
     getData()
   }, [])
 
-  const search = (text) => {
-    setChangedData(
-      data.filter((item) => {
-        return (
-          item.lastName.toLowerCase().includes(inputText.toLowerCase()) ||
-          item.firstName.toLowerCase().includes(inputText.toLowerCase()) ||
-          item.userTag.toLowerCase().includes(inputText.toLowerCase())
-        )
-      })
-    )
+  const sortData = (data, param) => {
+    const newData = [...data].sort((a,b) => {
+      if (a.lastName < b.lastName) return -1
+    })
+    return newData
   }
 
   return (
@@ -67,6 +62,9 @@ function App() {
         setShowModal,
         searchError,
         setSearchError,
+        sortData,
+        needToSort,
+        setNeedToSort
       }}
     >
       <div className="App">

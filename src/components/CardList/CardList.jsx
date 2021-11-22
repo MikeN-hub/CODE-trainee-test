@@ -4,7 +4,7 @@ import Card from '../Card/Card'
 import './CardList.css'
 
 const CardList = () => {
-  const { data, inputText, searchError, setSearchError} = useContext(Context)
+  const { data, inputText } = useContext(Context)
 
   return (
     <div className="CardList">
@@ -18,8 +18,6 @@ const CardList = () => {
             item.userTag.toLowerCase().includes(inputText.toLowerCase())
           ) {
             return item
-          } else {
-            setSearchError(true)
           }
         })
         .map((item) => (
