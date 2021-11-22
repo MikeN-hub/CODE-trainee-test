@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from 'react'
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import './App.css'
 import { Context } from './context'
 import Main from './components/Main/Main'
 import Profile from './components/Profile/Profile'
 import axios from 'axios'
-// import TopBar from './components/TopBar/TopBar'
-// import CardList from './components/CardList/CardList'
 import CritError from './components/CritError/CritError'
 import Plug from './components/Plug'
+import Modal from './components/Modal/Modal'
+import SearchError from './components/SearchError/SearchError'
 
 function App() {
   const [data, setData] = useState([])
-  const [showMain, setShowMain] = useState(true)
+  const [changedData, setChangedData] = useState([])
   const [showCritError, setShowCritError] = useState(false)
-  const [profileInfo, setProfileInfo] = useState({});
+  const [searchError, setSearchError] = useState(false)
+  const [showModal, setShowModal] = useState(false)
+  const [profileInfo, setProfileInfo] = useState({})
+  const [inputText, setInputText] = useState('')
 
   const URL =
     'https://stoplight.io/mocks/kode-education/trainee-test/25143926/users'
@@ -30,7 +33,6 @@ function App() {
         })
         const { items } = await res.data
         setData(items)
-        
       } catch (error) {
         console.log(error)
         setShowCritError(true)
@@ -40,20 +42,42 @@ function App() {
     getData()
   }, [])
 
-  // const getProfileInfo = (info) => {
-  //   setProfileInfo(info)
-  // }
+  const search = (text) => {
+    setChangedData(
+      data.filter((item) => {
+        return (
+          item.lastName.toLowerCase().includes(inputText.toLowerCase()) ||
+          item.firstName.toLowerCase().includes(inputText.toLowerCase()) ||
+          item.userTag.toLowerCase().includes(inputText.toLowerCase())
+        )
+      })
+    )
+  }
 
   return (
-    <Context.Provider value={{ data, profileInfo, setProfileInfo }}>
+    <Context.Provider
+      value={{
+        data,
+        setData,
+        profileInfo,
+        setProfileInfo,
+        inputText,
+        setInputText,
+        showModal,
+        setShowModal,
+        searchError,
+        setSearchError,
+      }}
+    >
       <div className="App">
         <Routes>
           <Route path="/" element={<Main />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
           <Route path="/plug" element={<Plug />}></Route>
         </Routes>
-        {/* <Main /> */}
         {showCritError && <CritError />}
+        {searchError && <SearchError />}
+        {showModal && <Modal />}
       </div>
     </Context.Provider>
   )

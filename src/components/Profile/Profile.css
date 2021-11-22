@@ -9,6 +9,10 @@
   height: 100vh;
 }
 
+.Profile header {
+  height: 280px;
+}
+
 .navigation-bar {
   margin-top: 12px;
   height: 48px;
@@ -43,9 +47,54 @@
 }
 
 .person-card .fullName {
+  display: flex;
+  align-items: center;
   margin-bottom: 12px;
 }
 
-.person-card .fullName span {
-  padding: 0 5px;
+.fullName :first-child {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  color: var(--strong-text-color);
+}
+
+.fullName :last-child {
+  margin-left: 4px;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 22px;
+  color: var(--lite-text-color);
+}
+
+.position {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 15px;
+  color: var(--mid-text-color);
+}
+
+.date {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.birthday {
+  display: flex;
+  align-items: center;
+}
+
+.birthday >:last-child {
+  margin-left: 14px;
+}
+
+.phone {
+  display: flex;
+  align-items: center;
+}
+
+.phone > :last-child {
+  margin-left: 14px;
+  cursor: pointer;
 }

@@ -4,13 +4,27 @@ import Card from '../Card/Card'
 import './CardList.css'
 
 const CardList = () => {
-  const { data } = useContext(Context)
+  const { data, inputText, searchError, setSearchError} = useContext(Context)
 
   return (
     <div className="CardList">
-      {data.map((item) => (
-        <Card key={item.id} item={item} />
-      ))}
+      {data
+        .filter((item) => {
+          if (inputText === '') {
+            return item
+          } else if (
+            item.lastName.toLowerCase().includes(inputText.toLowerCase()) ||
+            item.firstName.toLowerCase().includes(inputText.toLowerCase()) ||
+            item.userTag.toLowerCase().includes(inputText.toLowerCase())
+          ) {
+            return item
+          } else {
+            setSearchError(true)
+          }
+        })
+        .map((item) => (
+          <Card key={item.id} item={item} />
+        ))}
     </div>
   )
 }
